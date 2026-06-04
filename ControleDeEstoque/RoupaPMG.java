@@ -27,24 +27,29 @@ public class RoupaPMG implements Item {
 
     public void venda(){
         System.out.println("Qual o tamanho deseja para sua roupa?\n[1] P\n[2] M\n[3] G");
-        int tamanho = sc.nextInt();  
-        reposicaoEstoque();
-        switch (tamanho){
-            case 1:
-                System.out.println("Camisa P comprada!");
-                setQuantidadeP(quantidadeP--);
-                break;
-            case 2:
-                System.out.println("Camisa M comprada!");
-                setQuantidadeM(quantidadeM--);
-                break;
-            case 3:
-                System.out.println("Camisa G comprada!");
-                setQuantidadeG(quantidadeG--);
-                break;
-            default:
-                System.out.println("Tamanho indisponivel.");
-                return;
+        try {
+            int tamanho = sc.nextInt();  
+            reposicaoEstoque();
+            switch (tamanho){
+                case 1:
+                    System.out.println("Camisa P comprada!");
+                    setQuantidadeP(quantidadeP--);
+                    break;
+                case 2:
+                    System.out.println("Camisa M comprada!");
+                    setQuantidadeM(quantidadeM--);
+                    break;
+                case 3:
+                    System.out.println("Camisa G comprada!");
+                    setQuantidadeG(quantidadeG--);
+                    break;
+                default:
+                    System.out.println("Tamanho indisponivel.");
+                    return;
+            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Entrada inválida. Digite um número inteiro entre 1 e 3.");
+            sc.nextLine();
         }
     }
 

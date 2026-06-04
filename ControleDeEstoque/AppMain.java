@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AppMain {
@@ -22,32 +23,37 @@ public class AppMain {
             +"\n5 - " + itens[4].getDescricao()
             +"\n0 - Sair do programa.");
 
-            int op = sc.nextInt();
+            try {
+                int op = sc.nextInt();
+                sc.nextLine(); 
 
-            switch ((op)) {
-                case 1:
-                    itens[0].venda();
-                    break;
-                case 2:
-                    itens[1].venda();
-                    break;
-                case 3:
-                    itens[2].venda();
-                    break;
-                case 4:
-                    itens[3].venda();
-                    break;
-                case 5:
-                    itens[4].venda();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    up = false;
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    return;
+                switch (op) {
+                    case 1:
+                        itens[0].venda();
+                        break;
+                    case 2:
+                        itens[1].venda();
+                        break;
+                    case 3:
+                        itens[2].venda();
+                        break;
+                    case 4:
+                        itens[3].venda();
+                        break;
+                    case 5:
+                        itens[4].venda();
+                        break;
+                    case 0:
+                        System.out.println("Saindo...");
+                        up = false;
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Entrada inválida. Digite um número entre 0 e 5.");
+                sc.nextLine(); // descarta o texto que não é inteiro
             }
-        } while (up == true);
+        } while (up);
     }
 }
